@@ -1,5 +1,7 @@
-﻿using FirstTask.Contracts;
+﻿using AutoMapper;
+using FirstTask.Contracts;
 using FirstTask.EF;
+using FirstTask.Interfaces;
 using FirstTask.Models;
 using FirstTask.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -13,21 +15,23 @@ namespace FirstTask.Controllers
 {
     public class UserController : ControllerBase
     {
-        private readonly ApplicationContext db;
-        UserRepository Methods;
+        
+        private readonly IRepository<User> _repository;
+        private readonly IMapper _mapper;
 
-        public UserController(ApplicationContext context)
+        public UserController(IRepository<User> repo,IMapper mapper)
         {
-            db = context;
-            Methods = new UserRepository(context);
+            _mapper = mapper;
+            _repository = repo;
 
 
         }
         
         [HttpPost(ApiRoutes.Users.Add)]
-        public void Add(User user)
+        public void Add(UserRequest userRequest)
         {
-            Methods.Create(user);
+            User user = _mapper.Map<User>(userRequest);
+            _repository.Create(user);
 
         }
 
@@ -37,14 +41,14 @@ namespace FirstTask.Controllers
         {
 
 
-            return Methods.GetAll();
+            return _repository.GetAll();
 
         }
 
         [HttpGet(ApiRoutes.Users.Get)]
         public User Get(int id)
         {
-            return Methods.Get(id);
+            return _repository.Get(id);
 
         }
 
@@ -52,14 +56,14 @@ namespace FirstTask.Controllers
         [HttpPut(ApiRoutes.Users.Update)]
         public void Update(User user)
         {
-            Methods.Update(user);
+            _repository.Update(user);
 
         }
 
         [HttpDelete(ApiRoutes.Users.Delete)]
         public void Delete(int id)
         {
-            Methods.Delete(id);
+            _repository.Delete(id);
         }
     }
 }

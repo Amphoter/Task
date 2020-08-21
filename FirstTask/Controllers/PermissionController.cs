@@ -1,5 +1,8 @@
-﻿using FirstTask.Contracts;
+﻿using AutoMapper;
+using FirstTask.Contracts;
 using FirstTask.EF;
+using FirstTask.Interfaces;
+using FirstTask.Models;
 using FirstTask.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,58 +10,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static FirstTask.Contracts.ApiRoutes;
+using Permission = FirstTask.Models.Permission;
 
 namespace FirstTask.Controllers
 {
     public class PermissionController
     {
-        private readonly ApplicationContext db;
-        PermissionRepository Methods;
+        
+        private readonly IRepository<Permission> _repository;
+        private readonly IMapper _mapper;
 
-        public PermissionController(ApplicationContext context)
+        public PermissionController(IRepository<Permission> repo,IMapper mapper)
         {
-            db = context;
-            Methods = new PermissionRepository(context);
+            _mapper = mapper;
+            _repository = repo;
 
         }
 
 
-        [HttpPost(ApiRoutes.Permission.Add)]
-        public void Create(Models.Permission perm)
+        [HttpPost(ApiRoutes.Permissions.Add)]
+        public void Create(PermissionRequest permRequest)
         {
-            Methods.Create(perm);
+            Permission perm = _mapper.Map<Permission>(permRequest);
+            _repository.Create(perm);
 
         }
 
 
-        [HttpGet(ApiRoutes.Permission.Get)]
-        public Models.Permission Get(int id)
+        [HttpGet(ApiRoutes.Permissions.Get)]
+        public Permission Get(int id)
         {
-            return Methods.Get(id);
+            return _repository.Get(id);
 
 
         }
 
-        [HttpGet(ApiRoutes.Permission.GetAll)]
-        public IEnumerable<Models.Permission> Get()
+        [HttpGet(ApiRoutes.Permissions.GetAll)]
+        public IEnumerable<Permission> Get()
         {
-            return Methods.GetAll();
+            return _repository.GetAll();
 
 
         }
 
 
-        [HttpPut(ApiRoutes.Permission.Update)]
-        public void Update(Models.Permission perm)
+        [HttpPut(ApiRoutes.Permissions.Update)]
+        public void Update(Permission perm)
         {
-            Methods.Update(perm);
+            _repository.Update(perm);
 
         }
 
-        [HttpDelete(ApiRoutes.Permission.Delete)]
+        [HttpDelete(ApiRoutes.Permissions.Delete)]
         public void Delete(int id)
         {
-            Methods.Delete(id);
+            _repository.Delete(id);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FirstTask.Models
 {
-    public class Task
+    public class UserTask
     {
         public int Id { get; set; }
 

@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FirstTask.EF;
+using FirstTask.Interfaces;
+using FirstTask.Models;
 using FirstTask.Options;
+using FirstTask.Repositories;
+using FirstTask.Requests;
+using FirstTask.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using static FirstTask.Contracts.ApiRoutes;
 
 namespace FirstTask
 {
@@ -29,17 +36,9 @@ namespace FirstTask
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            
-            services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(connection));
+            services.InstallServicesInAssembly(Configuration);
+          
 
-
-            services.AddSwaggerGen(x =>
-            {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "First Task API", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

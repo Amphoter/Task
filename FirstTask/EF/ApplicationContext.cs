@@ -11,7 +11,7 @@ namespace FirstTask.EF
     {
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<Models.UserTask> Tasks { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Office> Offices { get; set; }
 

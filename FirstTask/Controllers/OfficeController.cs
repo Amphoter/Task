@@ -1,5 +1,7 @@
-﻿using FirstTask.Contracts;
+﻿using AutoMapper;
+using FirstTask.Contracts;
 using FirstTask.EF;
+using FirstTask.Interfaces;
 using FirstTask.Models;
 using FirstTask.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -14,21 +16,23 @@ namespace FirstTask.Controllers
     public class OfficeController:ControllerBase
     {
 
-        private readonly ApplicationContext db;
-        OfficeRepository Methods;
-        
-        public OfficeController(ApplicationContext context)
+       
+        private readonly IRepository<Office> _repository;
+        private readonly IMapper _mapper;
+
+        public OfficeController(IRepository<Office> repo,IMapper mapper)
         {
-            db = context;
-            Methods = new OfficeRepository(context);
-            
+            _repository = repo;
+            _mapper = mapper;
+
 
         }
 
         [HttpPost(ApiRoutes.Offices.Add)]
-        public void Add(Office office)
-        {
-            Methods.Create(office);
+        public void Add(OfficeRequest officeRequest)
+        {         
+            Office office = _mapper.Map<Office>(officeRequest);
+            _repository.Create(office);
            
         }
 
@@ -38,14 +42,14 @@ namespace FirstTask.Controllers
         {
 
            
-            return Methods.GetAll();
+            return _repository.GetAll();
 
         }
 
         [HttpGet(ApiRoutes.Offices.Get)]
         public Office Get(int id)
         {
-            return Methods.Get(id);
+            return _repository.Get(id);
             
         }
 
@@ -53,14 +57,14 @@ namespace FirstTask.Controllers
         [HttpPut(ApiRoutes.Offices.Update)]
         public void Update(Office office)
         {
-            Methods.Update(office);
+            _repository.Update(office);
 
         }
 
         [HttpDelete(ApiRoutes.Offices.Delete)]
         public void Delete(int id)
         {
-            Methods.Delete(id);
+            _repository.Delete(id);
         }
 
 

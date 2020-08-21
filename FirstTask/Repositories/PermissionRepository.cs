@@ -1,4 +1,5 @@
 ﻿using FirstTask.EF;
+using FirstTask.Interfaces;
 using FirstTask.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FirstTask.Repositories
 {
-    public class PermissionRepository
+    public class PermissionRepository : IRepository<Permission>
     {
         private ApplicationContext db;
         public PermissionRepository(ApplicationContext context)

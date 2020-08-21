@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace FirstTask.Models
 {
-    public class User
+    public class UserRequest
     {
-        public int Id { get; set; }
+        
         public string Name { get; set; }
         public string Surname { get; set; }
         public int age { get; set; }
@@ -15,7 +15,7 @@ namespace FirstTask.Models
         public ICollection<UserTask> Tasks { get; set; } = new List<UserTask>();
         public ICollection<Permission> Permissions { get; set; } = new List<Permission>();
 
-       
+        
 
     }
 

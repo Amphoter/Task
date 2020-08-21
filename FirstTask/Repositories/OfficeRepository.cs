@@ -1,4 +1,5 @@
-﻿using FirstTask.EF;
+﻿using AutoMapper;
+using FirstTask.EF;
 using FirstTask.Interfaces;
 using FirstTask.Models;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +12,13 @@ namespace FirstTask.Repositories
 {
     public class OfficeRepository : IRepository<Office>
     {
-        private ApplicationContext db;
+        private readonly ApplicationContext db;
+        //private readonly IMapper _mapper;
 
         public OfficeRepository(ApplicationContext context)
         {
             db = context;
+            //_mapper = mapper;
         }
 
         public Office Get(int id)
@@ -29,6 +32,7 @@ namespace FirstTask.Repositories
 
         public void Create(Office office)
         {
+            
             db.Offices.Add(office);
             db.SaveChanges();
         }

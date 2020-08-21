@@ -26,7 +26,7 @@ namespace FirstTask.Contracts
             public const string Update = "/api/office";
             public const string Delete = "/api/office/{id}";
         }
-        public static class Task
+        public static class UserTask
         {
             public const string Get = "/api/task/{id}";
             public const string GetAll = "/api/task";
@@ -34,7 +34,7 @@ namespace FirstTask.Contracts
             public const string Update = "/api/task";
             public const string Delete = "/api/task/{id}";
         }
-        public static class Permission
+        public static class Permissions
         {
             public const string Get = "/api/permission/{id}";
             public const string GetAll = "/api/permission";
