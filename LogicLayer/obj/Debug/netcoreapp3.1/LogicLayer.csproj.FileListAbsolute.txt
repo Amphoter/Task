@@ -1,0 +1,15 @@
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\LogicLayer.deps.json
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\LogicLayer.dll
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\LogicLayer.pdb
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.csprojAssemblyReference.cache
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.csproj.CoreCompileInputs.cache
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.AssemblyInfoInputs.cache
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.AssemblyInfo.cs
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.csproj.CopyComplete
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.dll
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.pdb
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\LogicLayer.runtimeconfig.json
+D:\Prog\c#\SimpleApi\LogicLayer\bin\Debug\netcoreapp3.1\LogicLayer.runtimeconfig.dev.json
+D:\Prog\c#\SimpleApi\LogicLayer\obj\Debug\netcoreapp3.1\LogicLayer.genruntimeconfig.cache
