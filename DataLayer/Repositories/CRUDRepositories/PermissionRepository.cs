@@ -1,19 +1,23 @@
 ﻿using DataLayer.EF;
 using DataLayer.Interfaces;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
   public   class PermissionRepository : ICrudRepository<Permission>
     {
         private readonly ApplicationContext db;
-       public  PermissionRepository(ApplicationContext context)
+        private readonly RoleManager<Permission> _roleManager;
+       public  PermissionRepository(ApplicationContext context, RoleManager<Permission> roleManager)
         {
             db = context;
+            _roleManager = roleManager;
         }
 
         public Permission Get(int id)
@@ -27,13 +31,19 @@ namespace DataLayer.Repositories
 
         public void Create(Permission perm)
         {
+             perm.NormalizedName = perm.Name.ToUpper();         
             db.Roles.Add(perm);
             db.SaveChanges();
         }
 
         public void Update(Permission perm,int idToUpdate)
         {
-            // db.Entry(perm).State = EntityState.Modified;
+            Permission permToUpdate = db.Roles.Find(idToUpdate);
+
+            if(perm.Name != null) { permToUpdate.Name = perm.Name; }
+            if (perm.Description != null) { permToUpdate.Description = perm.Description; }
+
+            db.Update(permToUpdate);
             db.SaveChanges();
         }
 
@@ -45,5 +55,7 @@ namespace DataLayer.Repositories
                 db.Roles.Remove(perm);
             db.SaveChanges();
         }
+
+       
     }
 }

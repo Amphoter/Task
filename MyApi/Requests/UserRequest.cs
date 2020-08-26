@@ -12,8 +12,7 @@ namespace LogicLayer.Requests
         public int Age { get; set; }
        
         public string Password { get; set; }
-        public Office Office { get; set; }
-        public ICollection<UserTask> Tasks { get; set; } = new List<UserTask>();
-        public ICollection<Permission> Permissions { get; set; } = new List<Permission>();
+        public Office Office { get; set; }        
+
     }
 }

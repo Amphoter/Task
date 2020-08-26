@@ -20,10 +20,10 @@ namespace MyApi.Controllers
        private readonly ICrudRepository<Permission> _repository;
         private readonly IMapper _mapper;
 
-        public PermissionController(ICrudRepository<Permission> methods, IMapper mapper)
+        public PermissionController(ICrudRepository<Permission> repo, IMapper mapper)
         {
             _mapper = mapper;
-            _repository = methods;
+            _repository = repo;
 
         }
 
@@ -37,7 +37,7 @@ namespace MyApi.Controllers
         }
 
         [HttpGet(ApiRoutes.Permissions.GetAll)]
-        public IEnumerable<PermissionResponse> Get()
+        public IEnumerable<PermissionResponse> GetAll()
         {
             return _mapper.Map<IEnumerable<PermissionResponse>>(_repository.GetAll());
 

@@ -21,10 +21,10 @@ namespace MyApi.Controllers
         private readonly IMapper _mapper;
         
 
-        public OfficeController(ICrudRepository<Office> methods,IMapper mapper)
+        public OfficeController(ICrudRepository<Office> repo,IMapper mapper)
         {
             _mapper = mapper;
-            _repository = methods;
+            _repository = repo;
             
 
 
@@ -32,8 +32,7 @@ namespace MyApi.Controllers
 
         [HttpPost(ApiRoutes.Offices.Create)]
         public void Add(OfficeRequest officeRequest)
-        {
-            //Office office = _mapper.Map<Office>(officeRequest);
+        {           
             _repository.Create(_mapper.Map<Office>(officeRequest));
 
         }
@@ -41,7 +40,7 @@ namespace MyApi.Controllers
 
 
         [HttpGet(ApiRoutes.Offices.GetAll)]
-        public IEnumerable<OfficeResponse> Get()
+        public IEnumerable<OfficeResponse> GetAll()
         {
 
             return _mapper.Map<IEnumerable<OfficeResponse>>(_repository.GetAll());

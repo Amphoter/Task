@@ -1,16 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using DataLayer.Repositories;
 using MyApi.Contracts;
-using LogicLayer.Requests;
-using AutoMapper;
 using DataLayer.Models;
-using Microsoft.AspNetCore.Identity;
 using DataLayer.Interfaces;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using DataLayer.EF;
-using System.Linq;
-using Microsoft.IdentityModel.Tokens;
+
 
 namespace MyApi.Controllers
 {
@@ -19,23 +12,13 @@ namespace MyApi.Controllers
 
 
         private readonly IAccountManager<LoginModel> _loginrep;
-        private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
-        private readonly ApplicationContext _context;
-        private readonly SignInManager<User> _signInManager;
+
         
 
-       public LoginController(IAccountManager<LoginModel> loginrep,
-           IMapper mapper,
-           UserManager<User> userManager,
-           ApplicationContext context,
-           SignInManager<User> signInManager)
+       public LoginController(IAccountManager<LoginModel> loginrep)
         {
             _loginrep = loginrep;
-            _mapper = mapper;
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
+
         }
 
 

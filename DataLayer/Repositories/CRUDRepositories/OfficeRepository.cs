@@ -12,15 +12,12 @@ namespace DataLayer.Repositories
    public class OfficeRepository: ICrudRepository<Office>
     {
         private readonly ApplicationContext db;
-        private readonly IMapper _mapper;
 
 
-        public OfficeRepository(ApplicationContext context,IMapper mapper)
+        public OfficeRepository(ApplicationContext context)
         {
             db = context;
-            _mapper = mapper;
-            
-
+                        
         }
 
         public Office Get(int id)
@@ -41,8 +38,9 @@ namespace DataLayer.Repositories
 
         public void Update(Office office,int idToUpdate)
         {
-            //db.Entry(office).State = EntityState.Modified;
-            //db.Entry(office).State = EntityState.Modified;
+            Office officeToUpdate = db.Offices.FirstOrDefault(o => o.Id == idToUpdate);
+            officeToUpdate.Name = office.Name;
+            db.Update(officeToUpdate);
             db.SaveChanges();
         }
 

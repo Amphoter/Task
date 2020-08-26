@@ -20,10 +20,10 @@ namespace MyApi.Controllers
        private readonly ICrudRepository<UserTask> _repository;
         private readonly IMapper _mapper;
 
-        public UserTaskController(ICrudRepository<UserTask> methods, IMapper mapper)
+        public UserTaskController(ICrudRepository<UserTask> repo, IMapper mapper)
         {
             _mapper = mapper;
-            _repository = methods;
+            _repository = repo;
 
         }
 
@@ -33,11 +33,11 @@ namespace MyApi.Controllers
         {
             
             _repository.Create(_mapper.Map<UserTask>(taskRequest));
-            //
+           
         }
 
         [HttpGet(ApiRoutes.UserTasks.GetAll)]
-        public IEnumerable<UserTaskResponse> Get()
+        public IEnumerable<UserTaskResponse> GetAll()
         {
             return _mapper.Map<IEnumerable<UserTaskResponse>>(_repository.GetAll());
 

@@ -29,17 +29,26 @@ namespace DataLayer.Repositories
 
         public void Create(UserTask task)
         {
-           /* User userToAddTask = db.Users.FirstOrDefault(u => Convert.ToInt32(u.Id) == task.UserId);
-             userToAddTask.Tasks.Add(task);
             db.Tasks.Add(task);
-            db.Update(userToAddTask);
-            */
             db.SaveChanges();
         }
 
         public void Update(UserTask task,int idToUpdate)
         {
-            //db.Entry(task).State = EntityState.Modified;
+            UserTask taskToUpdate = db.Tasks.FirstOrDefault(t=>t.Id==idToUpdate);
+            
+            if (task.UserId != 0 ) 
+            {
+                taskToUpdate.UserId = task.UserId;
+            }
+            
+            if (task.TaskDescription != null )
+            {
+
+                taskToUpdate.TaskDescription = task.TaskDescription;
+            }
+
+            db.Update(taskToUpdate);
             db.SaveChanges();
         }
 

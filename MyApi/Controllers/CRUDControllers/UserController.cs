@@ -22,12 +22,12 @@ namespace MyApi.Controllers
     {
         
         private readonly ICrudRepository<User> _repository;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper ;
         
-        public UserController(ICrudRepository<User> methods, IMapper mapper)
+        public UserController(ICrudRepository<User> repo, IMapper mapper)
         {
             _mapper = mapper;
-            _repository = methods;
+            _repository = repo;
             
 
 
@@ -45,11 +45,11 @@ namespace MyApi.Controllers
 
         [Authorize(Roles ="admin")]
         [HttpGet(ApiRoutes.Users.GetAll)]
-        public IEnumerable<UserShortResponse> Get()
+        public IEnumerable<UserShortResponse> GetAll()
         {
             
             List<User> users = _repository.GetAll().ToList();
-            return _mapper.Map<List<UserShortResponse>>(users);
+            return  _mapper.Map<List<UserShortResponse>>(users);
             
 
         }

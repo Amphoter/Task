@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApi", "MyApi\MyApi.csproj", "{FBB79B9F-5FEA-4C36-9ED9-4ABD80C7F6B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApiTests", "MyApiTests\MyApiTests.csproj", "{77A8B912-B6B8-4E22-903A-3723B1C60C1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FBB79B9F-5FEA-4C36-9ED9-4ABD80C7F6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB79B9F-5FEA-4C36-9ED9-4ABD80C7F6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB79B9F-5FEA-4C36-9ED9-4ABD80C7F6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A8B912-B6B8-4E22-903A-3723B1C60C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A8B912-B6B8-4E22-903A-3723B1C60C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A8B912-B6B8-4E22-903A-3723B1C60C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A8B912-B6B8-4E22-903A-3723B1C60C1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
