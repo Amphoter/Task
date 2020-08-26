@@ -17,10 +17,10 @@ namespace MyApi.Controllers
     public class PermissionController : ControllerBase
     {
         
-       private readonly IRepository<Permission> _repository;
+       private readonly ICrudRepository<Permission> _repository;
         private readonly IMapper _mapper;
 
-        public PermissionController(IRepository<Permission> methods, IMapper mapper)
+        public PermissionController(ICrudRepository<Permission> methods, IMapper mapper)
         {
             _mapper = mapper;
             _repository = methods;

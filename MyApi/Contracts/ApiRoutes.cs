@@ -45,15 +45,14 @@ namespace MyApi.Contracts
 
         public static class Test
         {
-            public const string ShowPermissions = "/api/users/perm";
-            public const string ShowTasks = "/api/users/tasks";
-            public const string ShowOffice = "/api/users/office";
+            public const string InitializeDb = "/api/db/initialize";
         }
 
         public static class Login
         {
             public const string UserLogin = "/api/login";
             public const string UserCreate = "/api/reg";
+            public const string UserLogOut = "/api/logout";
         }
     }
 }

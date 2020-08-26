@@ -11,7 +11,7 @@ using System.Text;
 
 namespace DataLayer.Repositories 
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : ICrudRepository<User>
     {
         private readonly ApplicationContext db;
         private readonly IMapper _mapper;
@@ -36,7 +36,7 @@ namespace DataLayer.Repositories
             return _mapper.Map<IEnumerable<User>>(db.Users.ToList());
         }
 
-        public void Create(User user)
+        public  void Create(User user)
         {
             User userToCreate = new User()
             { Name = user.Name,
@@ -51,16 +51,17 @@ namespace DataLayer.Repositories
 
             if (user.OfficeId != null) { userToCreate.Office = db.Offices.FirstOrDefault(o => o.Id == user.Office.Id); }
             //userToCreate.Permissions.Add(db.Roles.Find(2));
-            _userManager.AddToRoleAsync(userToCreate,db.Roles.Find(2).Name);
-            db.SaveChanges();
+          //await  _userManager.AddToRoleAsync(userToCreate,db.Roles.Find(2).Name);
+            //_userManager.
+
             //userToCreate.Permissions.Add(db.Permissions.Find(2));
 
             //db.UserPermissions.Add(new UserPermission {UserId = user.Id,
             //PermissionId = 2});
-           // _userManager.CreateAsync(userToCreate);
-            
-            db.Users.Add(userToCreate);
+            // _userManager.CreateAsync(userToCreate);
             //db.UserRoles.Add(new IdentityUserRole<int> {UserId=userToCreate.Id,RoleId = 2 });
+
+            db.Users.Add(userToCreate);
             db.SaveChanges();
         }
 

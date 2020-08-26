@@ -7,6 +7,10 @@ using DataLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using DataLayer.Interfaces;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using DataLayer.EF;
+using System.Linq;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MyApi.Controllers
 {
@@ -14,36 +18,51 @@ namespace MyApi.Controllers
     {
 
 
-        private readonly ILogin<LoginModel> _loginrep;
+        private readonly IAccountManager<LoginModel> _loginrep;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
+        private readonly ApplicationContext _context;
+        private readonly SignInManager<User> _signInManager;
+        
 
-       public LoginController(ILogin<LoginModel> loginrep,IMapper mapper,UserManager<User> userManager)
+       public LoginController(IAccountManager<LoginModel> loginrep,
+           IMapper mapper,
+           UserManager<User> userManager,
+           ApplicationContext context,
+           SignInManager<User> signInManager)
         {
             _loginrep = loginrep;
             _mapper = mapper;
             _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
         }
 
 
         [HttpPost(ApiRoutes.Login.UserLogin)]
-        public string LogIn(LoginModel login)
+        public async Task SignIn(LoginModel login)
         {
-           
-            _loginrep.LogIn(login);
-            return (login.Name+ login.Password);
+
+           await  _loginrep.LogIn(login);
            
 
         }
 
         [HttpPut(ApiRoutes.Login.UserCreate)]
-        public async void Register(UserRequest request)
+        public async Task Register(RegisterModel regModel)
         {
-            User user = _mapper.Map<User>(request);
-            await _userManager.CreateAsync(user);
-            
 
+            await _loginrep.Register(regModel);
 
         }
+
+        [HttpDelete(ApiRoutes.Login.UserLogOut)]
+        public async Task LogOut()
+        {
+            await _loginrep.LogOut();
+
+        }
+
+
     }
 }

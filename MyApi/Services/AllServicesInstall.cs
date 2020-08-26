@@ -31,11 +31,11 @@ namespace Main.Services
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddTransient<IRepository<UserTask>, UserTaskRepository>();
-            services.AddTransient<IRepository<Permission>, PermissionRepository>();
-            services.AddTransient<IRepository<Office>, OfficeRepository>();
-            services.AddTransient<IRepository<User>, UserRepository>();
-            services.AddTransient<ILogin<LoginModel>, LoginRepository>();
+            services.AddTransient<ICrudRepository<UserTask>, UserTaskRepository>();
+            services.AddTransient<ICrudRepository<Permission>, PermissionRepository>();
+            services.AddTransient<ICrudRepository<Office>, OfficeRepository>();
+            services.AddTransient<ICrudRepository<User>, UserRepository>();
+            services.AddTransient<IAccountManager<LoginModel>, LoginRepository>();
         }
     }
 }

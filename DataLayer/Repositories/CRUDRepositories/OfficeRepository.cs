@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace DataLayer.Repositories
 {
-   public class OfficeRepository: IRepository<Office>
+   public class OfficeRepository: ICrudRepository<Office>
     {
         private readonly ApplicationContext db;
         private readonly IMapper _mapper;

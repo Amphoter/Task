@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataLayer.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface ICrudRepository<T> where T : class
     {
         void Create(T item);
         T Get(int id);

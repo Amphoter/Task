@@ -8,7 +8,7 @@ using DataLayer.Models;
 
 namespace DataLayer.Repositories
 {
-   public class UserTaskRepository : IRepository<UserTask>
+   public class UserTaskRepository : ICrudRepository<UserTask>
     {
         private readonly ApplicationContext db;
        public  UserTaskRepository(ApplicationContext context)

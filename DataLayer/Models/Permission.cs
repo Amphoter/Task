@@ -7,8 +7,7 @@ namespace DataLayer.Models
 {
     public class Permission:IdentityRole<int>
     {
-        //public int Id { get; set; }
-        //public string Name { get; set; }
+
         public string Description { get; set; }
     }
 

@@ -32,6 +32,8 @@ namespace MyApi.Mapping
 
             CreateMap<IdentityUser, UserShortResponse>();
             CreateMap<UserRequest, LoginModel>();
+
+            CreateMap<RegisterModel, User>();
         }
     }
 }

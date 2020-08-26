@@ -17,10 +17,10 @@ namespace MyApi.Controllers
     public class UserTaskController: ControllerBase
     {
         
-       private readonly IRepository<UserTask> _repository;
+       private readonly ICrudRepository<UserTask> _repository;
         private readonly IMapper _mapper;
 
-        public UserTaskController(IRepository<UserTask> methods, IMapper mapper)
+        public UserTaskController(ICrudRepository<UserTask> methods, IMapper mapper)
         {
             _mapper = mapper;
             _repository = methods;

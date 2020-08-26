@@ -21,10 +21,10 @@ namespace MyApi.Controllers
     public class UserController : ControllerBase
     {
         
-        private readonly IRepository<User> _repository;
+        private readonly ICrudRepository<User> _repository;
         private readonly IMapper _mapper;
         
-        public UserController(IRepository<User> methods, IMapper mapper)
+        public UserController(ICrudRepository<User> methods, IMapper mapper)
         {
             _mapper = mapper;
             _repository = methods;
@@ -43,7 +43,7 @@ namespace MyApi.Controllers
 
         
 
-        [Authorize]
+        [Authorize(Roles ="admin")]
         [HttpGet(ApiRoutes.Users.GetAll)]
         public IEnumerable<UserShortResponse> Get()
         {
@@ -53,7 +53,7 @@ namespace MyApi.Controllers
             
 
         }
-
+        [Authorize]
         [HttpGet(ApiRoutes.Users.Get)]
         public UserResponse Get(int id)
         {

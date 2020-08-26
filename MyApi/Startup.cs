@@ -12,6 +12,7 @@ using AutoMapper;
 using MyApi.Mapping;
 using Microsoft.AspNetCore.Identity;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Main
 {
@@ -38,7 +39,13 @@ namespace Main
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.InstallServicesInAssembly(Configuration);
-            services.ConfigureApplicationCookie(options=>options.LoginPath="/api/login");
+
+           /* services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/api/user");
+                });*/
+
 
 
 

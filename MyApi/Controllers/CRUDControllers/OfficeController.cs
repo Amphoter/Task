@@ -17,11 +17,11 @@ namespace MyApi.Controllers
     {
 
         
-       private readonly IRepository<Office> _repository;
+       private readonly ICrudRepository<Office> _repository;
         private readonly IMapper _mapper;
         
 
-        public OfficeController(IRepository<Office> methods,IMapper mapper)
+        public OfficeController(ICrudRepository<Office> methods,IMapper mapper)
         {
             _mapper = mapper;
             _repository = methods;

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataLayer.Repositories
 {
-  public   class PermissionRepository : IRepository<Permission>
+  public   class PermissionRepository : ICrudRepository<Permission>
     {
         private readonly ApplicationContext db;
        public  PermissionRepository(ApplicationContext context)
@@ -18,16 +18,16 @@ namespace DataLayer.Repositories
 
         public Permission Get(int id)
         {
-            return db.Permissions.FirstOrDefault(p => p.Id == id);
+            return db.Roles.FirstOrDefault(p => p.Id == id);
         }
         public IEnumerable<Permission> GetAll()
         {
-            return db.Permissions.ToList();
+            return db.Roles.ToList();
         }
 
         public void Create(Permission perm)
         {
-            db.Permissions.Add(perm);
+            db.Roles.Add(perm);
             db.SaveChanges();
         }
 
@@ -40,9 +40,9 @@ namespace DataLayer.Repositories
 
         public void Delete(int id)
         {
-            Permission perm = db.Permissions.Find(id);
+            Permission perm = db.Roles.Find(id);
             if (perm != null)
-                db.Permissions.Remove(perm);
+                db.Roles.Remove(perm);
             db.SaveChanges();
         }
     }

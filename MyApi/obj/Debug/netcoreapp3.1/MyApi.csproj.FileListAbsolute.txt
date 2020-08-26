@@ -40,8 +40,6 @@ D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagge
 D:\Prog\c#\SimpleApi\MyApi\obj\Debug\netcoreapp3.1\MyApi.dll
 D:\Prog\c#\SimpleApi\MyApi\obj\Debug\netcoreapp3.1\MyApi.pdb
 D:\Prog\c#\SimpleApi\MyApi\obj\Debug\netcoreapp3.1\MyApi.genruntimeconfig.cache
-D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\LogicLayer.dll
-D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\LogicLayer.pdb
 D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Prog\c#\SimpleApi\MyApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
